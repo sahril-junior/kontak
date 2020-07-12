@@ -25,7 +25,7 @@ $mail->Host= "smtp.gmail.com";
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 $mail->SetFrom("email@gmail.com","email sender");
-$mail->Username = "apps.sahril@gmail.com"; // username gmail yang akan digunakan untuk mengirim email
+$mail->Username = "sahril2179@gmail.com"; // username gmail yang akan digunakan untuk mengirim email
 $mail->Password = "sahril0210"; // Password email
 $mail->SetFrom($usermail, 'user');
 $mail->AddReplyTo($usermail,'user');
