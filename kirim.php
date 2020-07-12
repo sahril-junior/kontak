@@ -1,48 +1,28 @@
 <?php
+error_reporting(E_ALL);
+require 'PHPMailer/src/PHPMailer.php' ;
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+$mail =  new PHPMailer\PHPMailer1\PHPMailer();
+    $mail->IsSMTP(); 
+    $mail->IsHTML(true);
+    $mail->SMTPAuth 	= true; 
+    $mail->Host 		= "nugrohoprayogo.id";
+    $mail->Port 		= 465;
+    $mail->SMTPSecure 	= "ssl";
+    $mail->Username 	= "blog@nugrohoprayogo.id"; //username SMTP
+    $mail->Password 	= "emailsaya";   //password SMTP
+	$mail->From    		= "blog@nugrohoprayogo.id"; //sender email
+	$mail->FromName 	= "Nugroho Prayogo";      //sender name
+	$mail->AddAddress("apps.sahril@gmail.com", "Nugroho Prayogo");//recipient: email and name
+	$mail->Subject  	=  "Percobaan";
+	$mail->Body     	=  "Coba-Coba";
+	
+    $mail->AddAttachment("/cpanel.png","filesaya");
+	if($mail->Send()){
+     echo "Email sent successfully";
+	}else{
+	 echo "Email failed to send";
+	}
+?> 
 
-$nama= $_POST['nama'];
-$hp= $_POST['hp'];
-$alamat= $_POST['alamat'];
-$usermail= $_POST['usermail'];
-$body= "
-Nama : $nama <br/>
-HP : $hp <br/>
-Alamat: $alamat <br/>
-Email: $usermail <br/>
-";
-
-function Send_Mail($to,$subject,$body)
-{
-require 'PHPmailer/class.phpmailer.php';
-
- 
-
-$usermail= $_POST['usermail'];
-$mail = new PHPMailer();
-$mail->IsMail(true); // SMTP
-$mail->SMTPAuth = true; // SMTP authentication
-$mail->Host= "smtp.gmail.com";
-$mail->SMTPSecure = 'tls';
-$mail->Port = 587;
-$mail->SetFrom("email@gmail.com","email sender");
-$mail->Username = "sahril2179@gmail.com"; // username gmail yang akan digunakan untuk mengirim email
-$mail->Password = "sahril0210"; // Password email
-$mail->SetFrom($usermail, 'user');
-$mail->AddReplyTo($usermail,'user');
-$mail->Subject = $subject;
-$mail->MsgHTML($body);
-$address = $to;
-$mail->AddAddress($address, $to);
-$mail->AddAddress($usermail);
-if(!$mail->Send())
-return false;
-else
-return true;
-
-}
-
-$to = "apps.sahril@gmail.com"; //email tujuan
-$subject = "New email"; // subject email
-echo"<br/><br/><center><h3>email telah terkirim</h3></center>";
-Send_Mail($to,$subject,$body);
-?>
