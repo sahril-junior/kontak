@@ -1,8 +1,8 @@
 <?php
 error_reporting(E_ALL);
-require 'PHPMailer/src/PHPMailer.php' ;
-require 'PHPMailer/src/SMTP.php';
-require 'PHPMailer/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php' ;
+require 'PHPMailer-master/src/SMTP.php';
+require 'PHPMailer-master/src/Exception.php';
 $mail =  new PHPMailer\PHPMailer1\PHPMailer();
     $mail->IsSMTP(); 
     $mail->IsHTML(true);
